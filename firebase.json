@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "spectroscopy-13d95",
+  "private_key_id": "0aa507b5af621eba4da16fcbfd16ef55804e4933",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCpyC6hDinQAWkd\nHX0FxtgXQKSgqKCyD+IOeYbxVvhgUEvL6onWX6JlXDPZcSGb1BamvFpW4wz6GcUt\n0wXp4x/wsFVffvgdqVwLzaEwbFELQhhDpe8MJvXtIl3KvynkA4vkCsENAHO7ZvaE\njs9ih0Ny3Lglu+8PZDKbpC8hjDXnXV92nTk4mHyw2PKhpXebg5CZQk665/a/ZZdd\nEzTqy08BLZu83ktAd2csyxwyMcYBUMXqk2Bg2sGTjYXE+jnNyH/SZ8ijlRbjSnp1\nv3TzITyjBu12RnOHvxGXLg6ySlVzWUDB6JiWrnviCsf33zU82UmxPi9xRdBhsv1d\nyezIQEjHAgMBAAECggEAJ7A79joxXAZ4Y+34w9jvur/JvCSvK/C6j1epS9FgzmL2\n1PxGrG4+sCMVm8bubFbv1JpDI/x/lBdiGIwz3bDSTplp26D6rzRf6AJxo7guWcth\nkK7Bar3Qz1YxRqvZRwvtL6mz5y4r36r6BZK8t/OWuMsP4QJFp/tsOSXwPo9gKm0v\nrzWU3zZ7v2GYMP9a2C25SATj1+zpruwCmOTEq7u6tGKBSSMK1XBk4LSyIYu42dNi\nnvaf3A5svhwczAhKPvRijO7Z5TUJHd8y6Zm0yXPAFy/ttjsKyCrFuFaPhrBBVmbG\ndjvvKpwSSKO3caoQMLM+e10r5x8R3VorTUpaxjwYwQKBgQDeYEUkJmBy6Areyx9X\nNDibPfiO860mNb5FXRN7wF/ypxK955yMM20aaiBDCFuyuT9aa0H0hfajKW3qCr1J\nYOMuwc1l3Wx3YWAWwqtWxnhthBy1ZyB8qCeX4nwtsnrPrdpyfT70pbwhKEpkWucW\n5fEnugVovowpFcIjsomfqF9DVQKBgQDDdBm38uGhajPzLSg3zjfRTOGL9opUBCT0\nm7+YznCZtbkvLybxkxGdFahCzRjgQZSe7OqBma7mdb1Nye1tbh8s8ucBQKD24vaK\nlmTBNor46foLkvIUOs2m1pQR+P8c2p14oNziQtbeMH57lf4aaqJdV/I0YP8EiEwk\nzpUN4iMTqwKBgAIiYGeBasmPipMq1ekrWiO7S4hrtEy6lVHrG8XDSeh1TAvAjlMW\nJ0Tqodai3OZxOrduchqbsotMWX62jayHnoaTW5pPrrvSlm6Bfc1+aCd87h2bmMc5\nge/GP7TckqstmvwgUZtdf9m9nkEqUi95E4BzG5wuv/+g8tUO4J1Eq21lAoGAMpPV\nn+tDBeEUpmXWFXLQsOGjL/PRYeJcqcuv7dvl+XC0Bgi+nB7BnROgogCu4kE2M1X9\nbSIWx15KaVnKjdnESX5l1sYhoSGkSMKYOgNiPP1XDi2tZRy+YOEAGhKD+bR8sV13\nKzm+nmqQIGz0/2L+twbuDy3WcBbRFWk72wbcqtcCgYEAgYXftodsevZrP+oITF60\nRXFXqkXnVccVNXKywuG2Sy7UnL6vCODWfVyKjN0QKt9r1PgaCQxZMupUcRDYqaTu\nVyHBamsSY4tZGK0w3wYJ38SnUkDbSSygz9ZMXp6Gs8dIm9n6kG7QnNcrbxjjXwlT\n4FKrjkKfEdTj1kODKJdf+mw=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-vmjp7@spectroscopy-13d95.iam.gserviceaccount.com",
+  "client_id": "112871705429060217460",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-vmjp7%40spectroscopy-13d95.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
