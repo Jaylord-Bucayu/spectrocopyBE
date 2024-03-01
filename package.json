@@ -39,8 +39,6 @@
   "author": "Jakub Synowiec <jsynowiec@users.noreply.github.com>",
   "license": "Apache-2.0",
   "dependencies": {
-    "@tensorflow/tfjs": "^4.17.0",
-    "@tensorflow/tfjs-node": "^4.17.0",
     "@types/express": "^4.17.21",
     "@types/nodemailer": "^6.4.14",
     "axios": "^1.6.5",
