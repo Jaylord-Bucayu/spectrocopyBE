@@ -22,7 +22,7 @@ app.use('/models', express.static('models'));
 
 
 import admin from 'firebase-admin'; // Import firebase-admin
-import { channel } from 'diagnostics_channel';
+
 
 
 // Function to calculate the average of an array of numbers and round it up
