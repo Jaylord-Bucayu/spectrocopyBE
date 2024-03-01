@@ -30,7 +30,7 @@ export async function createResult(req: Request, res: Response) {
 
 }
 
-export async function createResultManual(body: any) {
+export async function createResultManual(body: Record<string, any>) : Promise<any> {
     try {
         // Create a new instance of Results model with the provided data
         const sections = new Results(body);

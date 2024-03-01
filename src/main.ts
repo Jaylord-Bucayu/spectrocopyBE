@@ -1,5 +1,4 @@
 
-// import * as tf from '@tensorflow/tfjs-node';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import express from 'express';
@@ -126,10 +125,10 @@ async function MakePrediction() {
     const snapshot = await ref.once('value');
     const datas = snapshot.val();
 
-    let data = [datas["A"], datas["B"], datas["C"], datas["D"], datas["E"], datas["F"]];
+    const data = [datas["A"], datas["B"], datas["C"], datas["D"], datas["E"], datas["F"]];
 
     // Calculate the rounded average
-    let roundedAverage = calculateRoundedAverage(data);
+    const roundedAverage = calculateRoundedAverage(data);
 
     // Log the rounded average
     // console.log({ roundedAverage });

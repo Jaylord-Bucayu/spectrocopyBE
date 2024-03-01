@@ -3,7 +3,7 @@ import mongoose, { Schema, Document,Types } from 'mongoose';
 interface I extends Document {
   channels?: number[] | null;
   created_by?: Types.ObjectId | null;
-  actual_moisture?:Number | null;
+  actual_moisture?:number | null;
 }
 
 const resultSchema: Schema<I> = new Schema<I>(

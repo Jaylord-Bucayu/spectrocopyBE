@@ -50,8 +50,8 @@ async function MakePrediction() {
         const ref = firebase_admin_1.default.database().ref('Results');
         const snapshot = await ref.once('value');
         const datas = snapshot.val();
-        let data = [datas["A"], datas["B"], datas["C"], datas["D"], datas["E"], datas["F"]];
-        let roundedAverage = calculateRoundedAverage(data);
+        const data = [datas["A"], datas["B"], datas["C"], datas["D"], datas["E"], datas["F"]];
+        const roundedAverage = calculateRoundedAverage(data);
         await firebase_admin_1.default.database().ref('Output').set({
             Prediction: roundedAverage,
             flags: 3
