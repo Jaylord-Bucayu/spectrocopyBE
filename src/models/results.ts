@@ -1,19 +1,24 @@
-import mongoose, { Schema, Document } from 'mongoose';
+import mongoose, { Schema, Document,Types } from 'mongoose';
 
 interface I extends Document {
-  section_name?: string | null;
-  
-  
+  channels: number[];
+  created_by?: Types.ObjectId;
 }
 
 const resultSchema: Schema<I> = new Schema<I>(
   {
-    section_name: {
-      type: String,
-      default: null,
+    channels: {
+      type: [Number],
+      default: [],
+    },
+    created_by: {
+      type: Types.ObjectId,
+      ref: 'User',
+    },
+    actual_moisture:{
+      type: Number,
+      default: 0,
     }
-   
-
   },
   { timestamps: true }
 );

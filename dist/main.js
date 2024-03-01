@@ -6,9 +6,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const cors_1 = __importDefault(require("cors"));
 const body_parser_1 = __importDefault(require("body-parser"));
 const express_1 = __importDefault(require("express"));
+const results_routes_1 = require("./routes/results.routes");
+const results_controller_1 = require("./controllers/results.controller");
 const app = (0, express_1.default)();
+const mongoose_1 = __importDefault(require("./config/mongoose"));
 app.use((0, cors_1.default)());
 app.use(body_parser_1.default.json());
+(0, mongoose_1.default)();
+(0, results_routes_1.ResultsRoute)(app);
 app.use('/models', express_1.default.static('models'));
 const firebase_admin_1 = __importDefault(require("firebase-admin"));
 function calculateRoundedAverage(numbers) {
@@ -33,51 +38,36 @@ firebase_admin_1.default.initializeApp({
     credential: firebase_admin_1.default.credential.cert("./firebase.json"),
     databaseURL: firebaseConfig.databaseURL
 });
-app.get('/results', (_, res) => {
-    const ref = firebase_admin_1.default.database().ref('Results');
-    const value = firebase_admin_1.default.database().ref('Value');
-    let moisture = { moisture_level: '' };
-    value.once('value', (snapshot) => {
-        moisture = snapshot.val();
-        return;
-    });
-    ref.once('value', (snapshot) => {
-        const datas = snapshot.val();
-        const data = [
-            {
-                channels: [
-                    datas["A"],
-                    datas["B"],
-                    datas["C"],
-                    datas["D"],
-                    datas["E"],
-                    datas["F"]
-                ],
-                actual_moisture: moisture === null || moisture === void 0 ? void 0 : moisture.moisture_level
-            },
-        ];
-        res.status(200).send(data);
-    }, (errorObject) => {
-        res.status(500).json({ error: 'Failed to fetch data', message: errorObject.message });
-    });
+const ref = firebase_admin_1.default.database().ref('Output');
+ref.on('value', (snapshot) => {
+    if (snapshot.val().flags == 2) {
+        MakePrediction();
+    }
+    return 0;
 });
-app.get('/', async (_, res) => {
+async function MakePrediction() {
     try {
         const ref = firebase_admin_1.default.database().ref('Results');
-        ref.once('value', (snapshot) => {
-            const datas = snapshot.val();
-            const data = [datas["A"], datas["B"], datas["C"], datas["D"], datas["E"], datas["F"]];
-            const roundedAverage = calculateRoundedAverage(data);
-            firebase_admin_1.default.database().ref('Value').set({ moisture_level: roundedAverage });
+        const snapshot = await ref.once('value');
+        const datas = snapshot.val();
+        let data = [datas["A"], datas["B"], datas["C"], datas["D"], datas["E"], datas["F"]];
+        let roundedAverage = calculateRoundedAverage(data);
+        await firebase_admin_1.default.database().ref('Output').set({
+            Prediction: roundedAverage,
+            flags: 3
         });
-        return res.send("Data processed successfully.");
+        await (0, results_controller_1.createResultManual)({ channels: data, actual_moisture: roundedAverage });
+        return "Data processed successfully.";
     }
     catch (error) {
         console.error('Error processing data:', error);
-        return res.status(500).send('Internal Server Error');
+        return 'Internal Server Error';
     }
+}
+app.get('/', async (_, res) => {
+    res.send(MakePrediction());
 });
-const PORT = process.env.PORT || 3000;
+const PORT = 5000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });

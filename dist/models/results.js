@@ -25,9 +25,17 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importStar(require("mongoose"));
 const resultSchema = new mongoose_1.Schema({
-    section_name: {
-        type: String,
-        default: null,
+    channels: {
+        type: [Number],
+        default: [],
+    },
+    created_by: {
+        type: mongoose_1.Types.ObjectId,
+        ref: 'User',
+    },
+    actual_moisture: {
+        type: Number,
+        default: 0,
     }
 }, { timestamps: true });
 resultSchema.virtual('id').get(function () {
