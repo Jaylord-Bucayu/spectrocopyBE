@@ -18,5 +18,5 @@ export function ResultsRoute(app: Application) {
     app.post("/results/create", createResult)
 
 
-    app.delete("/results/delete/:id", deleteResult)
+    app.delete("/results/:id", deleteResult)
 }
