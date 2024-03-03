@@ -1,6 +1,6 @@
 import { Application } from "express";
 
-import { getResultById, createResult, getAllResult } from "../controllers/results.controller";
+import { getResultById, createResult, getAllResult,deleteResult } from "../controllers/results.controller";
 
 export function ResultsRoute(app: Application) {
 
@@ -16,4 +16,7 @@ export function ResultsRoute(app: Application) {
     )
 
     app.post("/results/create", createResult)
+
+
+    app.delete("/results/delete/:id", deleteResult)
 }

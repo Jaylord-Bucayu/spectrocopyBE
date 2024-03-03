@@ -46,4 +46,17 @@ export async function createResultManual(body: Record<string, any>) : Promise<an
         console.error('Error creating result:', error);
         throw error; // Re-throw the error for the caller to handle
     }
+
+  
+}
+
+export async function deleteResult(req: Request, res: Response) {
+    const params = req.params
+
+    await Results.findByIdAndDelete(params.id);
+
+    res.send({
+        message:"deleted"
+    })
+        
 }

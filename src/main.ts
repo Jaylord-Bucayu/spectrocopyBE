@@ -112,7 +112,8 @@ ref.on('value', (snapshot) => {
   // console.log(snapshot.val())
 
   if(snapshot.val().flags == 2 ){
-    MakePrediction();
+    console.log("hello")
+    //MakePrediction();
   }
  return 0;
 })
@@ -151,8 +152,10 @@ async function MakePrediction() {
 
 
 
-app.get('/', async (_: Request, res: Response) => {
-  res.send(MakePrediction());
+app.get('/ping', async (_: Request, res: Response) => {
+  //res.send(MakePrediction());
+
+  res.send("server is now active")
 });
 
 
