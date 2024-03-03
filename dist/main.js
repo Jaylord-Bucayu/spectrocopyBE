@@ -65,7 +65,7 @@ async function MakePrediction() {
     }
 }
 app.get('/', async (_, res) => {
-    res.send(MakePrediction());
+    res.send("server is server");
 });
 const PORT = 5000;
 app.listen(PORT, () => {

@@ -6,6 +6,7 @@ function ResultsRoute(app) {
     app.get('/results', results_controller_1.getAllResult);
     app.get("/results/:id", results_controller_1.getResultById);
     app.post("/results/create", results_controller_1.createResult);
+    app.delete("/results/delete/:id", results_controller_1.deleteResult);
 }
 exports.ResultsRoute = ResultsRoute;
 //# sourceMappingURL=results.routes.js.map

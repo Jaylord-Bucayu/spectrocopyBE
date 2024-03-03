@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createResultManual = exports.createResult = exports.getAllResult = exports.getResultById = void 0;
+exports.deleteResult = exports.createResultManual = exports.createResult = exports.getAllResult = exports.getResultById = void 0;
 const results_1 = __importDefault(require("../models/results"));
 async function getResultById(req, res) {
     const data = req.params.id;
@@ -36,4 +36,12 @@ async function createResultManual(body) {
     }
 }
 exports.createResultManual = createResultManual;
+async function deleteResult(req, res) {
+    const params = req.params;
+    await results_1.default.findByIdAndDelete(params.id);
+    res.send({
+        message: "deleted"
+    });
+}
+exports.deleteResult = deleteResult;
 //# sourceMappingURL=results.controller.js.map
