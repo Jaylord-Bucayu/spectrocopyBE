@@ -5,6 +5,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteResult = exports.createResultManual = exports.createResult = exports.getAllResult = exports.getResultById = void 0;
 const results_1 = __importDefault(require("../models/results"));
+function calculateRoundedAverage(numbers) {
+    if (numbers.length === 0) {
+        return 0;
+    }
+    const sum = numbers.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+    const average = sum / numbers.length;
+    const roundedAverage = Math.round(average * 100) / 100;
+    return (roundedAverage / 100).toFixed(2);
+}
 async function getResultById(req, res) {
     const data = req.params.id;
     const sections = await results_1.default.findById(data);
@@ -19,7 +28,15 @@ async function getAllResult(req, res) {
 exports.getAllResult = getAllResult;
 async function createResult(req, res) {
     const data = req.body;
-    const sections = new results_1.default(data);
+    var arrayOfStrings = data.channels.split(',');
+    var arrayOfNumbers = arrayOfStrings.map(function (str) {
+        return parseInt(str, 10);
+    });
+    const sections = new results_1.default();
+    sections.variety = data.variety;
+    sections.channels = arrayOfNumbers;
+    sections.actual_moisture = calculateRoundedAverage(arrayOfNumbers);
+    await sections.save();
     res.send(sections);
 }
 exports.createResult = createResult;

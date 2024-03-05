@@ -36,6 +36,9 @@ const resultSchema = new mongoose_1.Schema({
     actual_moisture: {
         type: Number,
         default: 0,
+    },
+    variety: {
+        type: String
     }
 }, { timestamps: true });
 resultSchema.virtual('id').get(function () {

@@ -4,6 +4,7 @@ interface I extends Document {
   channels?: number[] | null;
   created_by?: Types.ObjectId | null;
   actual_moisture?:number | null;
+  variety:string;
 }
 
 const resultSchema: Schema<I> = new Schema<I>(
@@ -19,6 +20,9 @@ const resultSchema: Schema<I> = new Schema<I>(
     actual_moisture:{
       type: Number,
       default: 0,
+    },
+    variety:{
+      type:String
     }
   },
   { timestamps: true }

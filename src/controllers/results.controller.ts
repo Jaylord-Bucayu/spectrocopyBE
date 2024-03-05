@@ -1,6 +1,23 @@
 import { Request, Response } from "express";
 import Results from "../models/results";
 
+function calculateRoundedAverage(numbers:any) {
+    if (numbers.length === 0) {
+        return 0; // return 0 for an empty array
+    }
+
+    // Calculate the sum of all numbers in the array
+    const sum = numbers.reduce((accumulator:any, currentValue:any) => accumulator + currentValue, 0);
+
+    // Calculate the average by dividing the sum by the number of elements
+    const average = sum / numbers.length;
+
+    // Round the average to 2 decimal points
+    const roundedAverage = Math.round(average * 100) / 100;
+
+    return (roundedAverage / 100).toFixed(2);
+}
+
 export async function getResultById(req: Request, res: Response) {
 
     const data = req.params.id;
@@ -24,7 +41,20 @@ export async function getAllResult(req: Request, res: Response) {
 export async function createResult(req: Request, res: Response) {
 
     const data = req.body;
-    const sections = new Results(data);
+    var arrayOfStrings: string[] = data.channels.split(',');
+
+// Convert each string element into a number
+var arrayOfNumbers: number[] = arrayOfStrings.map(function(str:string) {
+    return parseInt(str, 10); // Use parseInt to convert string to number
+});
+
+    const sections = new Results();
+    sections.variety = data.variety;
+    sections.channels = arrayOfNumbers;
+    
+    //@ts-ignore
+    sections.actual_moisture = calculateRoundedAverage(arrayOfNumbers);
+    await sections.save();
 
     res.send(sections)
 
@@ -60,3 +90,4 @@ export async function deleteResult(req: Request, res: Response) {
     })
         
 }
+

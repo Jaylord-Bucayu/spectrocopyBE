@@ -64,9 +64,15 @@ async function MakePrediction() {
         return 'Internal Server Error';
     }
 }
-app.get('/', async (_, res) => {
+app.get('/ping', async (_, res) => {
+    console.log("pinged");
     res.send("server is server");
 });
+const CronJob = require("cron").CronJob;
+const job = new CronJob("*/14 * * * *", () => {
+    console.log('Request successful');
+});
+job.start();
 const PORT = 5000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);

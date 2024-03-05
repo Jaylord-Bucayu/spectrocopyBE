@@ -152,12 +152,55 @@ async function MakePrediction() {
 
 
 
-app.get('/', async (_: Request, res: Response) => {
+app.get('/ping', async (_: Request, res: Response) => {
  
-
+ console.log("pinged")
   res.send("server is server")
 });
 
+
+
+// import cron from 'cron';
+// import axios from 'axios';
+
+
+
+const CronJob = require("cron").CronJob;
+
+//9:00 am
+const job = new CronJob("*/14 * * * *", () => {
+
+  console.log('Request successful');
+
+  // axios.get('https://spectrocopybe-8t7k.onrender.com/ping')
+  //       .then((_:any) => {
+  //           console.log('Request successful');
+
+  //           return;
+  //       })
+  //       .catch((error:any) => {
+  //           console.error('Error making request:', error.message);
+  //       });
+});
+
+// // Define a cron job to run every 14 minutes
+// const job = new cron.CronJob('*/1 * * * *', function() {
+//     // Call your request here using Axios or any HTTP client
+
+//     console.log("sads")
+//     // axios.get('http://localhost:5000/ping')
+//     //     .then((_:any) => {
+//     //         console.log('Request successful');
+
+//     //         return;
+//     //     })
+//     //     .catch((error:any) => {
+//     //         console.error('Error making request:', error.message);
+//     //     });
+// });
+
+// Start the cron job
+job.start();
 
 
 const PORT = 5000;
