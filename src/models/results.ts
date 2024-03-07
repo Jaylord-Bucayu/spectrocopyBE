@@ -5,6 +5,7 @@ interface I extends Document {
   created_by?: Types.ObjectId | null;
   actual_moisture?:number | null;
   variety:string;
+  price:number;
 }
 
 const resultSchema: Schema<I> = new Schema<I>(
@@ -23,6 +24,10 @@ const resultSchema: Schema<I> = new Schema<I>(
     },
     variety:{
       type:String
+    },
+    price:{
+      type:Number,
+      default:0
     }
   },
   { timestamps: true }

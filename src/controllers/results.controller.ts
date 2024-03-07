@@ -51,6 +51,7 @@ var arrayOfNumbers: number[] = arrayOfStrings.map(function(str:string) {
     const sections = new Results();
     sections.variety = data.variety;
     sections.channels = arrayOfNumbers;
+    sections.price = data.price;
     
     //@ts-ignore
     sections.actual_moisture = calculateRoundedAverage(arrayOfNumbers);
