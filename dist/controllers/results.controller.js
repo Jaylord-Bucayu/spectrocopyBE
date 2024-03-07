@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteResult = exports.createResultManual = exports.createResult = exports.getAllResult = exports.getResultById = void 0;
+exports.editResult = exports.deleteResult = exports.createResultManual = exports.createResult = exports.getAllResult = exports.getResultById = void 0;
 const results_1 = __importDefault(require("../models/results"));
 function calculateRoundedAverage(numbers) {
     if (numbers.length === 0) {
@@ -61,4 +61,20 @@ async function deleteResult(req, res) {
     });
 }
 exports.deleteResult = deleteResult;
+async function editResult(req, res) {
+    const params = req.params;
+    const body = req.body;
+    try {
+        const updatedResult = await results_1.default.findByIdAndUpdate(params.id, body, { new: true });
+        if (!updatedResult) {
+            return res.status(404).send({ message: "Result not found" });
+        }
+        res.status(200).send({ message: "Result edited successfully", result: updatedResult });
+    }
+    catch (error) {
+        console.error("Error editing result:", error);
+        res.status(500).send({ message: "Internal server error" });
+    }
+}
+exports.editResult = editResult;
 //# sourceMappingURL=results.controller.js.map

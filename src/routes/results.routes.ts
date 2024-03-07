@@ -1,6 +1,6 @@
 import { Application } from "express";
 
-import { getResultById, createResult, getAllResult,deleteResult } from "../controllers/results.controller";
+import { getResultById, createResult, getAllResult,deleteResult,editResult } from "../controllers/results.controller";
 
 export function ResultsRoute(app: Application) {
 
@@ -19,4 +19,6 @@ export function ResultsRoute(app: Application) {
 
 
     app.delete("/results/:id", deleteResult)
+
+    app.patch("/results/:id",editResult)
 }

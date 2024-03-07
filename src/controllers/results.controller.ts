@@ -91,3 +91,20 @@ export async function deleteResult(req: Request, res: Response) {
         
 }
 
+
+export async function editResult(req: Request, res: Response) {
+    const params = req.params;
+    const body = req.body;
+
+    try {
+        const updatedResult = await Results.findByIdAndUpdate(params.id, body, { new: true });
+        if (!updatedResult) {
+            return res.status(404).send({ message: "Result not found" });
+        }
+        res.status(200).send({ message: "Result edited successfully", result: updatedResult });
+    } catch (error) {
+        console.error("Error editing result:", error);
+        res.status(500).send({ message: "Internal server error" });
+    }
+}
+

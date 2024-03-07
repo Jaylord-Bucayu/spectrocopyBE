@@ -161,26 +161,26 @@ app.get('/ping', async (_: Request, res: Response) => {
 
 
 // import cron from 'cron';
-// import axios from 'axios';
+import axios from 'axios';
 
 
 
 const CronJob = require("cron").CronJob;
 
 //9:00 am
-const job = new CronJob("*/14 * * * *", () => {
+const job = new CronJob("*/13 * * * *", () => {
 
   console.log('Request successful');
 
-  // axios.get('https://spectrocopybe-8t7k.onrender.com/ping')
-  //       .then((_:any) => {
-  //           console.log('Request successful');
+  axios.get('https://spectrocopybe-8t7k.onrender.com/ping')
+        .then((_:any) => {
+            console.log('Request successful');
 
-  //           return;
-  //       })
-  //       .catch((error:any) => {
-  //           console.error('Error making request:', error.message);
-  //       });
+            return;
+        })
+        .catch((error:any) => {
+            console.error('Error making request:', error.message);
+        });
 });
 
 // // Define a cron job to run every 14 minutes

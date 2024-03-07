@@ -68,9 +68,18 @@ app.get('/ping', async (_, res) => {
     console.log("pinged");
     res.send("server is server");
 });
+const axios_1 = __importDefault(require("axios"));
 const CronJob = require("cron").CronJob;
-const job = new CronJob("*/14 * * * *", () => {
+const job = new CronJob("*/13 * * * *", () => {
     console.log('Request successful');
+    axios_1.default.get('https://spectrocopybe-8t7k.onrender.com/ping')
+        .then((_) => {
+        console.log('Request successful');
+        return;
+    })
+        .catch((error) => {
+        console.error('Error making request:', error.message);
+    });
 });
 job.start();
 const PORT = 5000;
